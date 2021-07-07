@@ -34,43 +34,43 @@
 
 
 전체 앱 화면
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c450a3f-e08a-4dce-8175-ea470a38b7bd/__.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c450a3f-e08a-4dce-8175-ea470a38b7bd/__.gif)
+[image]
 
 # 현재 어느 수준까지 개발이 되어있는가
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f868d021-22ae-4653-a042-73e8ea3cc76f/__.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f868d021-22ae-4653-a042-73e8ea3cc76f/__.gif)
+화면
+[image]
 
 이메일 형식 오류
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d81689e7-3789-4ef1-b144-002a07f6e6f3/___.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d81689e7-3789-4ef1-b144-002a07f6e6f3/___.gif)
+화면
+[image]
 
 자동 로그인 및 로그아웃
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2c0d012e-ecb2-423c-92f2-7e1586fa180d/_.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2c0d012e-ecb2-423c-92f2-7e1586fa180d/_.gif)
+화면
+[image]
 
 글과 이미지 업로드
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/df9ef6a7-9cdc-414c-a5b4-b4a5ac3af218/__.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/df9ef6a7-9cdc-414c-a5b4-b4a5ac3af218/__.gif)
+화면
+[image]
 
 댓글 등록과 삭제
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d48992e1-a1b4-4392-95b1-3994612e644a/_.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d48992e1-a1b4-4392-95b1-3994612e644a/_.gif)
+화면
+[image]
 
 외부로 글 공유
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3eecc499-1596-4d59-94cd-164cbdbbbc35/___.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3eecc499-1596-4d59-94cd-164cbdbbbc35/___.gif)
+화면
+[image]
 
 글 수정 및 삭제
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2cbc55ef-1030-473b-a2f9-a78b2d7471ea/_.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2cbc55ef-1030-473b-a2f9-a78b2d7471ea/_.gif)
+화면
+[image]
 
 무한 스크롤
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18c21fc0-6c53-4135-9b98-77e6b0f5c8c2/09_.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18c21fc0-6c53-4135-9b98-77e6b0f5c8c2/09_.gif)
+화면
+[image]
 
 당겨서 새로고침
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a83d2dc9-7f4b-47ac-bd6d-5a995914b170/_____.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a83d2dc9-7f4b-47ac-bd6d-5a995914b170/_____.gif)
+화면
+[image]
 
 구독 했을 경우와 구독하지 않았을 경우
 
