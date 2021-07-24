@@ -27,8 +27,8 @@
 16-->D:\01_WorkSpace\App\cube\android\app\src\main\AndroidManifest.xml:8:5-70
 16-->D:\01_WorkSpace\App\cube\android\app\src\main\AndroidManifest.xml:8:22-68
 17    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-17-->[com.facebook.flipper:flipper:0.54.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\2fa344e99fbc8cc928a5b46ed302cce1\jetified-flipper-0.54.0\AndroidManifest.xml:16:5-76
-17-->[com.facebook.flipper:flipper:0.54.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\2fa344e99fbc8cc928a5b46ed302cce1\jetified-flipper-0.54.0\AndroidManifest.xml:16:22-73
+17-->[com.facebook.flipper:flipper:0.54.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\640e02c462dd9ed473d16d24880f195a\jetified-flipper-0.54.0\AndroidManifest.xml:16:5-76
+17-->[com.facebook.flipper:flipper:0.54.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\640e02c462dd9ed473d16d24880f195a\jetified-flipper-0.54.0\AndroidManifest.xml:16:22-73
 18
 19    <queries>
 19-->[:react-native-image-crop-picker] D:\01_WorkSpace\App\cube\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-14:15
@@ -47,7 +47,7 @@
 27        android:allowBackup="false"
 27-->D:\01_WorkSpace\App\cube\android\app\src\main\AndroidManifest.xml:16:7-34
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-28-->[androidx.core:core:1.1.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\7f5aeccd48d5bc731df0adf1c8d7029e\core-1.1.0\AndroidManifest.xml:24:18-86
+28-->[androidx.core:core:1.1.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\936cb5c7c30dd0dc083debbe3b303168\core-1.1.0\AndroidManifest.xml:24:18-86
 29        android:debuggable="true"
 30        android:icon="@mipmap/ic_launcher"
 30-->D:\01_WorkSpace\App\cube\android\app\src\main\AndroidManifest.xml:14:7-41
@@ -130,11 +130,11 @@
 71        </provider>
 72
 73        <meta-data
-73-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\6046c2e7efe833b3945f37489d13ca36\jetified-okhttp3-integration-4.11.0\AndroidManifest.xml:11:9-13:43
+73-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\ae09a16c416ad8962a14d7963f198ad7\jetified-okhttp3-integration-4.11.0\AndroidManifest.xml:11:9-13:43
 74            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
-74-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\6046c2e7efe833b3945f37489d13ca36\jetified-okhttp3-integration-4.11.0\AndroidManifest.xml:12:13-84
+74-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\ae09a16c416ad8962a14d7963f198ad7\jetified-okhttp3-integration-4.11.0\AndroidManifest.xml:12:13-84
 75            android:value="GlideModule" />
-75-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\6046c2e7efe833b3945f37489d13ca36\jetified-okhttp3-integration-4.11.0\AndroidManifest.xml:13:13-40
+75-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] C:\Users\KB\.gradle\caches\transforms-2\files-2.1\ae09a16c416ad8962a14d7963f198ad7\jetified-okhttp3-integration-4.11.0\AndroidManifest.xml:13:13-40
 76    </application>
 77
 78</manifest>

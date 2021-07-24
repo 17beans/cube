@@ -4,7 +4,7 @@
             "outputFile": "D:\\01_WorkSpace\\App\\cube\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\KB\\.gradle\\caches\\transforms-2\\files-2.1\\885892f22b2e4fca3ab72d3683cd3315\\jetified-ucrop-2.2.6-native\\res\\values-zh\\values-zh.xml",
+                    "source": "C:\\Users\\KB\\.gradle\\caches\\transforms-2\\files-2.1\\a7d66ee46ad04f31f769486c0fac80a3\\jetified-ucrop-2.2.6-native\\res\\values-zh\\values-zh.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
