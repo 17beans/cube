@@ -29,19 +29,19 @@
 
 |전체 앱 화면|
 |-|
-|<img width="225px" src="https://user-images.githubusercontent.com/29908722/126903732-5a54bc89-6c9b-4f37-adb3-134acb9cbe64.gif" />|
+|<img width="245px" src="https://user-images.githubusercontent.com/29908722/126903732-5a54bc89-6c9b-4f37-adb3-134acb9cbe64.gif" />|
 
 | 이메일 형식 오류 | 자동 로그인 및 로그아웃 | 글 및 이미지 업로드 |
 | - | - | - |
-| <img width="225px" src="https://user-images.githubusercontent.com/29908722/126903984-fbdef27f-46f8-4aef-ac56-fe27f65e8137.gif" /> | <img width="225px" src="https://user-images.githubusercontent.com/29908722/126903988-510a8e38-9fa4-4c82-97b1-6d58dba69ba2.gif" /> | <img width="225px" src="https://user-images.githubusercontent.com/29908722/126904005-937a90e4-98e9-4878-843a-9ccaf5608007.gif" /> |
+| <img width="245px" src="https://user-images.githubusercontent.com/29908722/126903984-fbdef27f-46f8-4aef-ac56-fe27f65e8137.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126903988-510a8e38-9fa4-4c82-97b1-6d58dba69ba2.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904005-937a90e4-98e9-4878-843a-9ccaf5608007.gif" /> |
 
 | 댓글 등록과 삭제 | 외부로 글 공유 | 글 수정 및 삭제 |
 | - | - | - |
-| <img width="225px" src="https://user-images.githubusercontent.com/29908722/126904100-ccaf6c57-e319-4ed6-83d1-ab8b3a9e626f.gif" /> | <img width="225px" src="https://user-images.githubusercontent.com/29908722/126904103-01134603-e412-4802-ad75-14834cc49cd4.gif" /> | <img width="225px" src="https://user-images.githubusercontent.com/29908722/126904106-e65b3a80-0e5b-4adf-a251-edb94f90f63f.gif" /> |
+| <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904100-ccaf6c57-e319-4ed6-83d1-ab8b3a9e626f.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904103-01134603-e412-4802-ad75-14834cc49cd4.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904106-e65b3a80-0e5b-4adf-a251-edb94f90f63f.gif" /> |
 
 | 무한 스크롤 | 당겨서 새로고침 | 구독 했을 경우와 <br>하지 않았을 경우 |
 | - | - | - |
-| <img width="225px" src="https://user-images.githubusercontent.com/29908722/126904191-2851e94f-cc27-49ec-b4ba-757a4944741d.gif" /> | <img width="225px" src="https://user-images.githubusercontent.com/29908722/126904193-81e9beb1-135a-4136-9d84-daf45d7b1b58.gif" /> | <img width="225px" src="https://user-images.githubusercontent.com/29908722/126904196-8ebab255-b6e0-4983-b569-f589e4b7c117.gif" /> |
+| <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904191-2851e94f-cc27-49ec-b4ba-757a4944741d.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904193-81e9beb1-135a-4136-9d84-daf45d7b1b58.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904196-8ebab255-b6e0-4983-b569-f589e4b7c117.gif" /> |
 
 # 그 외 구현된 기능
 
