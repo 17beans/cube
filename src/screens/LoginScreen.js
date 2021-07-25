@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
-import { TouchableOpacity, StyleSheet, View, Alert, KeyboardAvoidingView, ImageBackground } from 'react-native'
-import { Text } from 'react-native-paper'
-import Background from '../components/Background'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import TextInput from '../components/TextInput'
+import React, {useState} from 'react';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Alert,
+  KeyboardAvoidingView,
+  ImageBackground,
+} from 'react-native';
+import {Text} from 'react-native-paper';
+import Background from '../components/Background';
+import Logo from '../components/Logo';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
 // import BackButton from '../components/BackButton'
-import { theme } from '../core/theme'
-import { emailValidator } from '../helpers/emailValidator'
-import { passwordValidator } from '../helpers/passwordValidator'
+import {theme} from '../core/theme';
+import {emailValidator} from '../helpers/emailValidator';
+import {passwordValidator} from '../helpers/passwordValidator';
 import MSSQL from 'react-native-mssql';
-import glovar from '../components/glovar'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import glovar from '../components/glovar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const config = {
   server: '211.219.52.31', //ip address of the mssql database
@@ -21,47 +28,51 @@ const config = {
   database: 'cube2020', //the name of the database to connect to
   port: 1433, //OPTIONAL, port of the database on the server
   timeout: 5, //OPTIONAL, login timeout for the server
-}
+};
 // const connected = /*await*/ MSSQL.connect(config);
 
-export default function LoginScreen ({ navigation }) {
-  const [email, setEmail] = useState({ value: '', error: '' })
-  const [password, setPassword] = useState({ value: '', error: '' })
+export default function LoginScreen({navigation}) {
+  const logininfo = useSelector((state) => state.allStore.logininfo);
 
-  const onLoginPressed = async() => {
+  const [email, setEmail] = useState({value: '', error: ''});
+  const [password, setPassword] = useState({value: '', error: ''});
+
+  const onLoginPressed = async () => {
     // setEmail({ value: 'asdf1@naver.com', error: '' })
     // setPassword({ value: 'asdf', error: '' })
 
-    const emailError = emailValidator(email.value)
-    const passwordError = passwordValidator(password.value)
-
+    const emailError = emailValidator(email.value);
+    const passwordError = passwordValidator(password.value);
 
     if (emailError || passwordError) {
-      setEmail({ ...email, error: emailError })
-      setPassword({ ...password, error: passwordError })
-      return
+      setEmail({...email, error: emailError});
+      setPassword({...password, error: passwordError});
+      return;
     }
 
     const connected = await MSSQL.connect(config);
-    const query = `SELECT ID as idx, email, [사용자명] as name FROM MSysMember WHERE email='${String(email.value)}' AND PWD='${String(password.value)}';`
-    
+    const query = `SELECT ID as idx, email, [사용자명] as name FROM MSysMember WHERE email='${String(
+      email.value,
+    )}' AND PWD='${String(password.value)}';`;
+
     const result = await MSSQL.executeQuery(query);
     const closed = await MSSQL.close();
-    glovar.logininfo = result
+    logininfo = result;
 
-    console.log("========================================");
-    console.log("LoginScreen_LoginPressed()_Query");
+    console.log('========================================');
+    console.log('LoginScreen_LoginPressed()_Query');
     console.log(query);
-    console.log("========================================");
+    console.log('========================================');
     console.log();
     // console.log("glovar");
     // console.log(glovar.result);
-    
-    
-    
-    if (result == false){
-      Alert.alert("회원 정보가 존재하지 않습니다!", "이메일과 비밀번호를 확인해 주세요.")
-    }else{
+
+    if (result == false) {
+      Alert.alert(
+        '회원 정보가 존재하지 않습니다!',
+        '이메일과 비밀번호를 확인해 주세요.',
+      );
+    } else {
       // console.log("========================================");
       // console.log("LoginScreen_LoginPressed()_else");
       // console.log("QueryResult(result)의 idx, email, name 값: ");
@@ -80,16 +91,16 @@ export default function LoginScreen ({ navigation }) {
       //   email:result[0].email,
       //   name:result[0].name
       // }
-      const LKey_i = String(result[0].idx)    // 숫자를 저장할 수 없는 것 같음
-      const LKey_e = result[0].email
-      const LKey_n = result[0].name
+      const LKey_i = String(result[0].idx); // 숫자를 저장할 수 없는 것 같음
+      const LKey_e = result[0].email;
+      const LKey_n = result[0].name;
 
-      console.log("========================================");
-      console.log("LKey들");
-      console.log("LKey_i: " + LKey_i);
-      console.log("LKey_e: " + LKey_e);
-      console.log("LKey_n: " + LKey_n);
-      console.log("========================================");
+      console.log('========================================');
+      console.log('LKey들');
+      console.log('LKey_i: ' + LKey_i);
+      console.log('LKey_e: ' + LKey_e);
+      console.log('LKey_n: ' + LKey_n);
+      console.log('========================================');
 
       AsyncStorage.setItem('LKey_i', LKey_i);
       AsyncStorage.setItem('LKey_e', LKey_e);
@@ -97,16 +108,16 @@ export default function LoginScreen ({ navigation }) {
 
       navigation.reset({
         // index: 0,
-        routes: [{ name: 'SideBar' }],
-      })
+        routes: [{name: 'SideBar'}],
+      });
     }
 
     // const closed = MSSQL.close();
-  }
+  };
 
   return (
     <Background>
-    {/* <KeyboardAvoidingView style={styles.container}> */}
+      {/* <KeyboardAvoidingView style={styles.container}> */}
       {/* <BackButton goBack={navigation.goBack} /> */}
       <Logo />
       <Header>로그인 하기</Header>
@@ -114,7 +125,7 @@ export default function LoginScreen ({ navigation }) {
         label="이메일"
         returnKeyType="next"
         value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: '' })}
+        onChangeText={(text) => setEmail({value: text, error: ''})}
         error={!!email.error}
         errorText={email.error}
         autoCapitalize="none"
@@ -126,15 +137,13 @@ export default function LoginScreen ({ navigation }) {
         label="비밀번호"
         returnKeyType="done"
         value={password.value}
-        onChangeText={(text) => setPassword({ value: text, error: '' })}
+        onChangeText={(text) => setPassword({value: text, error: ''})}
         error={!!password.error}
         errorText={password.error}
         secureTextEntry
       />
       <View style={styles.forgotPassword}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('비밀번호 찾기')}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate('비밀번호 찾기')}>
           <Text style={styles.forgot}>비밀번호를 잊어버리셨나요?</Text>
         </TouchableOpacity>
       </View>
@@ -149,11 +158,11 @@ export default function LoginScreen ({ navigation }) {
       </View>
       {/* </KeyboardAvoidingView> */}
     </Background>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     padding: 20,
     width: '100%',
@@ -179,4 +188,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.colors.primary,
   },
-})
+});

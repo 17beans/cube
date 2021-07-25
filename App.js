@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {ActionSheetIOS, Alert, Button, Image, Share} from 'react-native';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 
 // pages
 import DetailPage from './src/screens/DetailPage';
@@ -84,6 +84,9 @@ const Drawer = createDrawerNavigator();
 // }
 
 const DashboardScreen = ({navigation}) => {
+  const logininfo = useSelector((state) => state.allStore.logininfo);
+  const lastDetail = useSelector((state) => state.allStore.lastDetail);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -117,7 +120,7 @@ const DashboardScreen = ({navigation}) => {
           headerTitle: '상세',
           headerTitleAlign: 'center',
           headerRight: () => {
-            if (glovar.lastDetail.email === glovar.logininfo.email) {
+            if (lastDetail.email === logininfo.email) {
               return (
                 <HeaderButtons>
                   <OverflowMenu
@@ -208,6 +211,9 @@ const VideoMenualScreen = ({navigation}) => {
 };
 
 const QnAScreen = ({navigation}) => {
+  const logininfo = useSelector((state) => state.allStore.logininfo);
+  const lastQnADetail = useSelector((state) => state.allStore.lastQnADetail);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -241,7 +247,7 @@ const QnAScreen = ({navigation}) => {
           headerTitleAlign: 'center',
           // headerShown:false,
           headerRight: () => {
-            if (glovar.lastQnADetail.email === glovar.logininfo.email) {
+            if (lastQnADetail.email === logininfo.email) {
               return (
                 <HeaderButtons>
                   <OverflowMenu
@@ -292,6 +298,9 @@ const QnAScreen = ({navigation}) => {
 };
 
 const TipScreen = ({navigation}) => {
+  const logininfo = useSelector((state) => state.allStore.logininfo);
+  const lastTipDetail = useSelector((state) => state.allStore.lastTipDetail);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -325,7 +334,7 @@ const TipScreen = ({navigation}) => {
           headerTitleAlign: 'center',
           // headerShown:false,
           headerRight: () => {
-            if (glovar.lastTipDetail.email === glovar.logininfo.email) {
+            if (lastTipDetail.email === logininfo.email) {
               return (
                 <HeaderButtons>
                   <OverflowMenu
@@ -729,59 +738,59 @@ export default function App() {
   console.disableYellowBox = true;
   return (
     <Root>
-      <Provider store={store}>
-        <NavigationContainer>
-          <OverflowMenuProvider>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Splash"
-                component={SplashScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="시작하기"
-                component={StartScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="로그인"
-                component={LoginScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="비밀번호 찾기"
-                component={ForgotPasswordScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="회원가입"
-                component={RegisterScreen}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              {/* <Stack.Screen name="tabhome" component={tabhome} options={{
+      {/* <Provider store={store}> */}
+      <NavigationContainer>
+        <OverflowMenuProvider>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Splash"
+              component={SplashScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="시작하기"
+              component={StartScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="로그인"
+              component={LoginScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="비밀번호 찾기"
+              component={ForgotPasswordScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="회원가입"
+              component={RegisterScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            {/* <Stack.Screen name="tabhome" component={tabhome} options={{
               headerShown:false
             }} /> */}
-              <Stack.Screen
-                name="SideBar"
-                component={SideBar}
-                options={{
-                  headerShown: false,
-                }}
-              />
-            </Stack.Navigator>
-          </OverflowMenuProvider>
-        </NavigationContainer>
-      </Provider>
+            <Stack.Screen
+              name="SideBar"
+              component={SideBar}
+              options={{
+                headerShown: false,
+              }}
+            />
+          </Stack.Navigator>
+        </OverflowMenuProvider>
+      </NavigationContainer>
+      {/* </Provider> */}
     </Root>
   );
 }

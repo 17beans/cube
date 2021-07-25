@@ -16,6 +16,8 @@ import MSSQL from 'react-native-mssql';
 import Loading from '../components/Loading';
 // import likeimg from '../assets/like.png'
 import glovar from '../components/glovar';
+import {useDispatch, useSelector} from 'react-redux';
+import {ChangeDetailView, createLastDetail} from '../redux/modules/allStore';
 
 const config = {
   server: '211.219.52.31', //ip address of the mssql database
@@ -28,6 +30,15 @@ const config = {
 // const connected = MSSQL.connect(config);
 
 export default function Dashboard({navigation}) {
+  const dispatch = useDispatch();
+
+  const lastDetail = useSelector((state) => state.allStore.lastDetail);
+  const logininfo = useSelector((state) => state.allStore.logininfo);
+  const P_idx = useSelector((state) => state.allStore.P_idx);
+  const detailViewState = useSelector(
+    (state) => state.allStore.detailViewState,
+  );
+
   const [data, setdata] = useState([]);
   const [ready, setReady] = useState(true);
   const [isrefresh, setrefresh] = useState(false);
@@ -66,18 +77,25 @@ export default function Dashboard({navigation}) {
   const upView = async (content) => {
     // console.log(content);
 
-    glovar.lastDetail = content;
-    glovar.P_idx = content.idx;
-    console.log('Dashboard_upView() =====================');
+    // lastDetail과 P_idx를 store에 저장 (lastDetail: content, P_idx:content.idx)
+    dispatch(createLastDetail(content));
+    // glovar.lastDetail = content;
+    // glovar.P_idx = content.idx;
+
+    console.log('========================================');
+    console.log('Dashboard_upView()');
+    console.log('========================================');
     // console.log("content: \n");
     // console.log(content);
-    console.log('glovar.lastDetail: \n');
-    console.log(glovar.lastDetail);
+    console.log('lastDetail: \n');
+    console.log(lastDetail);
     console.log('========================================');
 
-    if (glovar.detailViewState == false) {
-      console.log('Dashboard_upView() =====================');
-      console.log('idx: ' + glovar.lastDetail.idx + ' | 조회수 1 증가');
+    if (detailViewState == false) {
+      console.log('========================================');
+      console.log('Dashboard_upView()');
+      console.log('========================================');
+      console.log('idx: ' + lastDetail.idx + ' | 조회수 1 증가');
       console.log('========================================');
 
       const query = `UPDATE bbs SET View_cnt=[View_cnt] + 1 WHERE [Idx]=${content.idx}`;
@@ -89,16 +107,22 @@ export default function Dashboard({navigation}) {
       );
       // glovar.P_idx = content.idx
 
-      glovar.detailViewState = true;
+      // glovar.detailViewState = true;
+      dispatch(ChangeDetailView(true));
 
       setTimeout(() => {
-        glovar.detailViewState = false;
-        console.log('Dashboard_upView() =====================');
-        console.log('glovar.detailViewState = true 실행');
+        // glovar.detailViewState = false;
+        dispatch(ChangeDetailView(false));
+        console.log('========================================');
+        console.log('Dashboard_upView()');
+        console.log('========================================');
+        console.log('detailViewState = true 실행');
         console.log('========================================');
       }, /*600000*/ 10000);
-    } else if (glovar.detailViewState == true) {
-      console.log('Dashboard_upView() =====================');
+    } else if (detailViewState == true) {
+      console.log('========================================');
+      console.log('Dashboard_upView()');
+      console.log('========================================');
       console.log('이미 조회수를 1 올렸습니다. 10분 뒤에 제한이 해제됩니다.');
       console.log('========================================');
       navigation.navigate(
@@ -109,7 +133,7 @@ export default function Dashboard({navigation}) {
     } else {
       console.log('Dashboard_upView() =====================');
       console.log('오류!');
-      console.log('glovar.detailViewState는 ' + glovar.detailViewState);
+      console.log('detailViewState는 ' + detailViewState);
       console.log('========================================');
     }
   };
@@ -131,10 +155,10 @@ export default function Dashboard({navigation}) {
       },
     });
     console.log('Dashboard_회원정보 =====================');
-    // console.log("id:    " + glovar.logininfo.id);
-    // console.log("email: " + glovar.logininfo.email);
-    // console.log("name:  " + glovar.logininfo.name);
-    console.log(glovar.logininfo);
+    // console.log("id:    " + logininfo.id);
+    // console.log("email: " + logininfo.email);
+    // console.log("name:  " + logininfo.name);
+    console.log(logininfo);
     console.log('========================================');
     // dbconnect()
     // calldata()

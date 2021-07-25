@@ -21,6 +21,7 @@ import glovar from '../components/glovar';
 // import ImageCollection from '../components/ImageCollection'
 import ImageSlider from '../components/ImageSlider';
 import BtnDelReply from '../components/BtnDelReply';
+import {useSelector} from 'react-redux';
 
 const config = {
   server: '211.219.52.31', //ip address of the mssql database
@@ -33,6 +34,10 @@ const config = {
 // const connected = MSSQL.connect(config);
 
 export default function DetailPage({navigation, route}) {
+  const logininfo = useSelector((state) => state.allStore.logininfo);
+  const lastDetail = useSelector((state) => state.allStore.lastDetail);
+  const P_idx = useSelector((state) => state.allStore.P_idx);
+
   const [reply, setreply] = useState();
   const [replys, setreplys] = useState();
   // let newReplyCnt = 0
@@ -42,7 +47,7 @@ export default function DetailPage({navigation, route}) {
   const callreply = async () => {
     const connected = await MSSQL.connect(config);
     const query = `SELECT Idx, [desc], name, email, date, thumbnail FROM bbs WHERE (((bbs.P_idx)=${Number(
-      glovar.P_idx,
+      P_idx,
     )})) ORDER BY Idx;`;
     const result = await MSSQL.executeQuery(query);
 
@@ -51,17 +56,17 @@ export default function DetailPage({navigation, route}) {
     console.log(JSON.stringify(result));
     console.log('========================================');
 
-    // const query2 = `SELECT Idx, Count(*) AS Reply_cnt2 FROM bbs GROUP BY Idx, Reply_chk, P_idx HAVING Reply_chk=1 AND P_idx=${Number(glovar.P_idx)};`
+    // const query2 = `SELECT Idx, Count(*) AS Reply_cnt2 FROM bbs GROUP BY Idx, Reply_chk, P_idx HAVING Reply_chk=1 AND P_idx=${Number(P_idx)};`
     // const result2 = await MSSQL.executeQuery(query2);
 
     // // console.log("DetailPage_query2 ======================");
     // // console.log("query2: \n" + query2);
     // // console.log("========================================");
 
-    // const query3 = `UPDATE bbs SET Reply_cnt=${Number(result2.length)} WHERE [Idx] = ${glovar.P_idx}`
+    // const query3 = `UPDATE bbs SET Reply_cnt=${Number(result2.length)} WHERE [Idx] = ${P_idx}`
     // const result3 = MSSQL.executeQuery(query3);
 
-    const query2 = `SELECT Count(*) AS Reply_cnt2 FROM bbs WHERE P_idx=${glovar.P_idx}`;
+    const query2 = `SELECT Count(*) AS Reply_cnt2 FROM bbs WHERE P_idx=${P_idx}`;
     const result2 = await MSSQL.executeQuery(query2);
 
     setreplys(result);
@@ -74,7 +79,7 @@ export default function DetailPage({navigation, route}) {
     console.log('DetailPage_callreply()');
     console.log('========================================');
     console.log('result(댓글들) ' + JSON.stringify(result));
-    // console.log("glovar.P_idx: " + glovar.P_idx);
+    // console.log("P_idx: " + P_idx);
     // console.log("result2 " + JSON.stringify(result2[0].Reply_cnt2));
     // console.log("newReplyCnt: " + newReplyCnt);    // DetailPage가 실행될 때 callreply()에서 별도로 불러온 댓글 갯수
     console.log(
@@ -83,13 +88,13 @@ export default function DetailPage({navigation, route}) {
     console.log('========================================');
     // const closed = MSSQL.close();
 
-    // const query2 = `SELECT Idx, Count(*) AS Reply_cnt2 FROM bbs GROUP BY Idx, Reply_chk, P_idx HAVING Reply_chk=1 AND P_idx=${Number(glovar.P_idx)};`
+    // const query2 = `SELECT Idx, Count(*) AS Reply_cnt2 FROM bbs GROUP BY Idx, Reply_chk, P_idx HAVING Reply_chk=1 AND P_idx=${Number(P_idx)};`
     // const result2 = await MSSQL.executeQuery(query2);
     // console.log("query2: \n" + query2);
 
-    // glovar.Reply_cnt = result2.length
+    // Reply_cnt = result2.length
 
-    // const query2 = `SELECT Count(*) AS Reply_cnt2 FROM bbs GROUP BY Reply_chk, P_idx HAVING Reply_chk=1 AND P_idx=${glovar.P_idx};`
+    // const query2 = `SELECT Count(*) AS Reply_cnt2 FROM bbs GROUP BY Reply_chk, P_idx HAVING Reply_chk=1 AND P_idx=${P_idx};`
     // const result2 = await MSSQL.executeQuery(query2);
     // console.log("쿼리는 정상인데");
     // console.log("query2: \n" + query2);
@@ -144,20 +149,20 @@ export default function DetailPage({navigation, route}) {
       Alert.alert('', '댓글을 작성했습니다!');
 
       const query = `INSERT INTO bbs (email, name, [desc], Reply_chk, P_idx) VALUES('${String(
-        glovar.logininfo.email,
-      )}', '${String(glovar.logininfo.name)}', '${String(reply)}', 1, ${Number(
-        glovar.P_idx,
+        logininfo.email,
+      )}', '${String(logininfo.name)}', '${String(reply)}', 1, ${Number(
+        P_idx,
       )})`;
 
-      const query2 = `UPDATE bbs SET Reply_cnt=Reply_cnt+1 WHERE Idx=${glovar.lastDetail.idx}`;
+      const query2 = `UPDATE bbs SET Reply_cnt=Reply_cnt+1 WHERE Idx=${lastDetail.idx}`;
 
       // navigation.goBack()
-      // navigation.navigate('DetailPage', {item:glovar.lastDetail})
-      navigation.replace('DetailPage', {item: glovar.lastDetail});
+      // navigation.navigate('DetailPage', {item:lastDetail})
+      navigation.replace('DetailPage', {item: lastDetail});
 
       console.log('DetailPage_upreply =====================');
-      console.log('glovar.logininfo.email: ' + glovar.logininfo.email);
-      console.log('glovar.logininfo.name: ' + glovar.logininfo.name);
+      console.log('logininfo.email: ' + logininfo.email);
+      console.log('logininfo.name: ' + logininfo.name);
       console.log('reply.value: ' + reply.value);
       console.log('replys: ' + replys);
       console.log('========================================');
@@ -174,7 +179,7 @@ export default function DetailPage({navigation, route}) {
     setdata(item);
     callreply();
     // console.log("DetailPage_useEffect ===================");
-    // console.log("glovar.lastDetail.thumbnail: " + glovar.lastDetail.thumbnail);
+    // console.log("lastDetail.thumbnail: " + lastDetail.thumbnail);
     // console.log("========================================");
   }, []);
 
@@ -280,7 +285,7 @@ export default function DetailPage({navigation, route}) {
                 <BtnDelReply
                   navigation={navigation}
                   email1={item.email}
-                  email2={glovar.logininfo.email}
+                  email2={logininfo.email}
                   idx={item.Idx}
                 />
               </View>

@@ -11,6 +11,7 @@ import {
 import glovar from '../components/glovar';
 import MSSQL from 'react-native-mssql';
 import Icon from 'react-native-vector-icons/Feather';
+import {useSelector} from 'react-redux';
 
 const config = {
   server: '211.219.52.31', //ip address of the mssql database
@@ -23,6 +24,8 @@ const config = {
 const connected = MSSQL.connect(config);
 
 export default function Mypage() {
+  const logininfo = useSelector((state) => state.allStore.logininfo);
+
   const [MyData, setMyData] = useState({
     Agreement: '준비 중...',
     Product: '준비 중...',
@@ -36,7 +39,7 @@ export default function Mypage() {
   });
 
   const calldata = async () => {
-    const query = `SELECT [사용권동의여부] as Agreement, [Product], [교육과정] as Curriculum, [StartDate] as SigninDate, [가입일자] as SubscribeStart, [enddate] as SubscribeEnd, [비밀번호힌트] as PasswdHint, [상품구분] as ProductClass, [push] FROM [MSysMember] where [email]='${glovar.logininfo.email}' AND [사용자명]='${glovar.logininfo.name}'`;
+    const query = `SELECT [사용권동의여부] as Agreement, [Product], [교육과정] as Curriculum, [StartDate] as SigninDate, [가입일자] as SubscribeStart, [enddate] as SubscribeEnd, [비밀번호힌트] as PasswdHint, [상품구분] as ProductClass, [push] FROM [MSysMember] where [email]='${logininfo.email}' AND [사용자명]='${logininfo.name}'`;
     const resdata = await MSSQL.executeQuery(query);
     setMyData(resdata[0]);
 
@@ -200,15 +203,15 @@ export default function Mypage() {
     calldata();
 
     // console.log("Mypage_useEffect_회원정보 ==============");
-    // console.log("LoginEmail: " + glovar.logininfo.email)
-    // console.log("LoginName:  " + glovar.logininfo.name)
+    // console.log("LoginEmail: " + logininfo.email)
+    // console.log("LoginName:  " + logininfo.name)
     // console.log("========================================");
   }, []);
 
   return (
     <ScrollView style={styles.Container}>
       <View style={styles.nameBox}>
-        <Text style={styles.txtName}>{glovar.logininfo.name}</Text>
+        <Text style={styles.txtName}>{logininfo.name}</Text>
         {/* <Text style={styles.txtDate}>회원가입: {SigninDate()}</Text> */}
       </View>
 
