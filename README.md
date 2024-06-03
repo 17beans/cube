@@ -1,17 +1,11 @@
-# [앱_미완성]\_Cube
-
+# 프로젝트 설명
 문제은행 프로그램(cs)의 모바일 커뮤니티 앱
+학교/학원/과외 선생님들이 수학문제 제작에 있어 편리함을 제공하는 문제은행 프로그램에 대한 편리한 운영을 위한 플랫폼으로 자동로그인/로그아웃, QnA, 메뉴얼, 사용 팁 ,공지사항 등 사용자들 간의 커뮤니케이션을 위한 Android 및 IOS 앱이다.
+- 당근 마켓, 중고나라 등의 앱을 벤치마킹하여 소비자 입장에서 가장 편한 UI가 무엇일지 고민하였고 심플한 디자인을 추구함
+- 로그인과 관련된 기능은 MSSQL을 통해 DB에서 회원 정보를 조회하여 이루어지도록 구현
+- 글 업로드 시 글은 MSSQL Server의 DB에, 이미지는 Python Flask를 이용하여 POST로 Apach 서버에 저장하고, Apache 서버의 이미지 URL을 DB에 넣어 글을 조회할 때 이미지 볼 수 있도록 구현
 
-# Cube 앱은...
-
-학교/학원/과외 선생님들이 수학문제 제작에 있어 편리함을 제공하는 문제은행 프로그램에 대한 편리한 운영을 위한 플랫폼으로 QnA, 메뉴얼, 사용 팁 ,공지사항 등 사용자들 간의 커뮤니케이션을 위한 Android 및 IOS 앱이다.
-
-# 프로젝트 형태
-
-- 개인 프로젝트
-
-# 사용한 기술 스택
-
+# Stacks
 - React Native(0.63.4) Without Expo (react-native-cli)
 - Redux
 - MSSQL(MS SQL Server)
@@ -19,14 +13,17 @@
 - Python(Flask)
 - 기타 사용된 라이브러리 package.json 참고
 
-# UI 및 기능 구현
+# 폴더 구조 및 파일
+- src
+  ㄴ assets: 앱에 이용되는 이미지 리소스들
+  ㄴ components: 재사용이 가능한 헤더, 각종 버튼, 이미지 슬라이더 등의 컴포넌트들
+  ㄴ helpers: 이메일, 이름, 패스워드 등의 검증 기능들
+  ㄴ redux: 전역 상태 관리용 디렉토리
+  ㄴ screens: 앱에 사용되는 모든 화면들
+- App.js: 앱의 Splash image를 보여준 뒤 보일 화면을 결정하도록 구현
+- index.js: Redux를 통한 전역 상태 관리를 위해 Provider로 App.js 컴포넌트를 감싸 구현
 
-- 당근 마켓, 중고나라 등의 앱을 벤치마킹하여 소비자 입장에서 가장 편한 UI가 무엇일지 고민하였고 심플한 디자인을 추구함
-- 로그인과 관련된 기능은 MSSQL을 통해 DB에서 회원 정보를 조회하여 이루어지도록 구현
-- 글 업로드 시 글은 MSSQL Server의 DB에, 이미지는 Python Flask를 이용하여 POST로 Apach 서버에 저장하고, Apache 서버의 이미지 URL을 DB에 넣어 글을 조회할 때 이미지 볼 수 있도록 구현
-
-# 현재 어느 수준까지 개발이 되어있는가
-
+# 앱 구동 모습
 |전체 앱 화면|
 |-|
 |<img width="245px" src="https://user-images.githubusercontent.com/29908722/126903732-5a54bc89-6c9b-4f37-adb3-134acb9cbe64.gif" />|
@@ -43,11 +40,5 @@
 | - | - | - |
 | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904191-2851e94f-cc27-49ec-b4ba-757a4944741d.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904193-81e9beb1-135a-4136-9d84-daf45d7b1b58.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904196-8ebab255-b6e0-4983-b569-f589e4b7c117.gif" /> |
 
-# 그 외 구현된 기능
-
-- 로그아웃
-
-# 향후 계획
-
-- 현재는 로그인 시 인증 서버를 따로 두지 않고 DB에서 바로 회원 정보를 확인하여 안전하지 않은 상태의 통신이 이루어지고 있다. 향후 로그인과 관련하여 인증 서버를 구축하거나 외부 로그인(카카오톡, 구글 등)을 이용하여 토큰을 통한 안전한 로그인 시스템을 갖출 계획이다.
-- Python Flask를 이용한 Apache와의 통신에서 https 통신에 어려움이 있어 현재는 http로 구현되어 있는데 https로 보안이 적용된 통신을 구현할 계획이다.
+# 버그 및 디버그
+로그인 구현 시 뒤로 이동 버튼을 클릭하면 앱 종료가 아닌 로그인 화면으로 다시 이동하는 이슈 발생, 페이지가 페이지 위에 쌓이는 방식(navigate)이 아닌 재위치(replace) 시키는 방식으로 해결.
