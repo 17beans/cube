@@ -40,5 +40,9 @@
 | - | - | - |
 | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904191-2851e94f-cc27-49ec-b4ba-757a4944741d.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904193-81e9beb1-135a-4136-9d84-daf45d7b1b58.gif" /> | <img width="245px" src="https://user-images.githubusercontent.com/29908722/126904196-8ebab255-b6e0-4983-b569-f589e4b7c117.gif" /> |
 
+# User & Data Flow
+<img width="562" alt="Cube User   Data Flow" src="https://github.com/user-attachments/assets/d94457fd-d66b-45cd-a0c0-951630119c7b">
+
+
 # 버그 및 디버그
 로그인 구현 시 뒤로 이동 버튼을 클릭하면 앱 종료가 아닌 로그인 화면으로 다시 이동하는 이슈 발생, 페이지가 페이지 위에 쌓이는 방식(navigate)이 아닌 재위치(replace) 시키는 방식으로 해결.
